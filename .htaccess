@@ -1,0 +1,26 @@
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType application/javascript A259200
+    ExpiresByType image/gif "access plus 2592000 seconds"
+    ExpiresByType image/jpg "access plus 2592000 seconds"
+    ExpiresByType image/jpeg "access plus 2592000 seconds"
+    ExpiresByType image/png "access plus 2592000 seconds"
+    ExpiresByType image/webp "access plus 2592000 seconds"
+    ExpiresByType text/css "access plus 2592000 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\\.css$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+    <FilesMatch "\\.(gif|ico|jpe?g|png|svg|webp)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+    <FilesMatch "\\.js$">
+        Header set Cache-Control "max-age=2592000, private"
+    </FilesMatch>
+</IfModule>
+
+# KILL THEM ETAGS
+Header unset ETag
+FileETag none
