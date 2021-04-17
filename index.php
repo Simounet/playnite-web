@@ -1,6 +1,7 @@
 <?php
 use Simounet\PlayniteWeb\Page;
 
+$start = microtime(true);
 require_once(__DIR__ . '/classes/Page.php');
 $page = new Page();
 ?><!DOCTYPE html>
@@ -39,5 +40,6 @@ $page = new Page();
         }, $page->games);
     ?>
     <script type="text/javascript" src="script.js" async></script>
+    <!-- Generated in <?php echo microtime(true) - $start;?> seconds -->
 </body>
 </html>
