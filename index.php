@@ -15,13 +15,14 @@ $page = new Page();
     <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
 </head>
 <body>
+    <h1 class="title">Games number: <?php echo count($page->games); ?></h1>
+    <div class="games">
     <?php
-        echo '<h1>Games number: ' . count($page->games) . '</h1>';
         array_map(function($game) use($page) {
             if($game['hidden'] === false) {
                 echo '<div class="game-container">';
                 if(is_string($game['cover-image'])) {
-                    echo '<img src="' . $game['cover-image'] . '" alt="' . $game['name'] . '" height="200" />';
+                    echo '<img src="' . $game['cover-image'] . '" class="game-cover" alt="' . $game['name'] . '" height="200" />';
                 }
                 echo '<span class="game-name">' . $game['name'] . '</span>';
                 echo '<div class="info" hidden>';
@@ -41,6 +42,7 @@ $page = new Page();
             }
         }, $page->games);
     ?>
+    </div>
     <input
         type="range"
         id="cover-size-range"

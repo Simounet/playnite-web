@@ -3,17 +3,33 @@
   --cover-height: 200px;
 }
 
-img {
-    object-fit: cover;
+body {
+    color: white;
+    background-color: #0b122c;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.games {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--cover-width));
+    justify-content: center;
+    gap: 5px;
 }
 
 .game-container {
     position: relative;
-    display: inline-block;
-    vertical-align: top;
 }
 
-img,
+.game-cover {
+    object-fit: cover;
+}
+
+
+.game-cover,
 .game-container {
     width: var(--cover-width, 150px);
     height: var(--cover-height, 200px);
