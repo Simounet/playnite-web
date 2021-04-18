@@ -1,3 +1,8 @@
+:root {
+  --cover-width: 150px;
+  --cover-height: 200px;
+}
+
 img {
     object-fit: cover;
 }
@@ -10,8 +15,8 @@ img {
 
 img,
 .game-container {
-    width: 150px;
-    height: 200px;
+    width: var(--cover-width, 150px);
+    height: var(--cover-height, 200px);
 }
 
 .game-name {
@@ -34,6 +39,13 @@ img,
     background-color: rgba(0,0,0, 0.8);
     align-items: center;
     justify-content: center;
+    z-index: 10;
+}
+
+.cover-size-range {
+    position: fixed;
+    top: 0;
+    right: 0;
     z-index: 10;
 }
 

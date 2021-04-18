@@ -41,6 +41,14 @@ $page = new Page();
             }
         }, $page->games);
     ?>
+    <input
+        type="range"
+        id="cover-size-range"
+        class="cover-size-range"
+        min="100"
+        max="400"
+        step="100"
+        value="200" />
     <script type="text/javascript" src="script.js" async></script>
     <!-- Generated in <?php echo microtime(true) - $start;?> seconds -->
 </body>
