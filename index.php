@@ -16,6 +16,9 @@ $page = new Page();
 </head>
 <body>
     <h1 class="title">Games number: <?php echo count($page->games); ?></h1>
+    <button class="settings-button" data-toggle-target="settings-container">
+        <img src="assets/images/icons/settings.svg" alt="settings" />
+    </button>
     <div class="games">
     <?php
         array_map(function($game) use($page) {
@@ -43,14 +46,20 @@ $page = new Page();
         }, $page->games);
     ?>
     </div>
-    <input
-        type="range"
-        id="cover-size-range"
-        class="cover-size-range"
-        min="100"
-        max="400"
-        step="100"
-        value="200" />
+    <div class="settings-container" data-toggle-id="settings-container" hidden>
+        <div class="settings-item">
+            <label class="setting-label" for="setting-cover-size">Cover size</label>
+            <input
+                type="range"
+                id="setting-cover-size"
+                class="cover-size-range"
+                min="100"
+                max="400"
+                step="100"
+                value="200"
+            />
+        </div>
+    </div>
     <script type="text/javascript" src="script.js" async></script>
     <!-- Generated in <?php echo microtime(true) - $start;?> seconds -->
 </body>

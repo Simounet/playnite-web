@@ -4,13 +4,54 @@
 }
 
 body {
+    margin-bottom: 70px;
     color: white;
     background-color: #0b122c;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
+button,
+label {
+    cursor: pointer;
+}
+
 .title {
     text-align: center;
+}
+
+.settings-container {
+    position: fixed;
+    display: flex;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.9);
+    gap: 40px;
+    z-index: 90;
+}
+
+.settings-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.setting-label {
+    margin-bottom: 4px;
+}
+
+.settings-button {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    background-color: #0b122ccc;
+    border: none;
+    border-top-left-radius: 20px;
+    z-index: 100;
 }
 
 .games {
@@ -60,13 +101,6 @@ body {
     background-color: rgba(0,0,0, 0.8);
     align-items: center;
     justify-content: center;
-    z-index: 10;
-}
-
-.cover-size-range {
-    position: fixed;
-    top: 0;
-    right: 0;
     z-index: 10;
 }
 
