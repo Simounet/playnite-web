@@ -45,6 +45,10 @@ body {
     word-break: break-word;
 }
 
+.name-hidden .game-name {
+    display: none;
+}
+
 .info {
     position: fixed;
     display: flex;
