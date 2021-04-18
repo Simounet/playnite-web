@@ -11,6 +11,8 @@ $page = new Page();
     <title>Playnite games library</title>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
 </head>
 <body>
     <?php
