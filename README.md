@@ -1,8 +1,8 @@
-# Playnite Web
+# <img src="assets/images/logo.svg" width="32"> Playnite Web
 
 ## Why?
 
-You're in love with your Playnite library on your desktop. You're not at home and you want to check if you already bought a game that a friend is talking about. With Playnite Web, you can!
+You're in love with your [Playnite](https://playnite.link/) library on your desktop. You're not at home and you want to check if you already bought a game that a friend is talking about. With Playnite Web, you can!
 
 ## Screenshot
 

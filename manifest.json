@@ -3,7 +3,7 @@
     "short_name": "Playnite",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#424242",
+    "background_color": "#0b122c",
     "icons": [
         {
           "src": "assets/images/icons/favicon-144x144.png",
