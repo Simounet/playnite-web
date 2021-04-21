@@ -19,7 +19,28 @@ $page = new Page();
     <button class="settings-button" data-toggle-target="settings-container">
         <img src="assets/images/icons/settings.svg" alt="settings" />
     </button>
-    <div class="games">
+    <div class="list-view" data-toggle-id="view-list" hidden>
+        <ul class="toc-list">
+            <?php
+                array_map(function($letter) {
+                    echo '<li class="toc-list-item"><a href="#toc-' . $letter . '" class="toc-link">' . $letter . '</a></li>';
+                }, array_keys($page->alphabeticalList));
+            ?>
+        </ul>
+        <div class="games-list-container">
+            <?php
+                foreach($page->alphabeticalList as $letter => $games) {
+                    echo '<h2 id="toc-' . $letter . '" class="games-list-letter">' . $letter . '</h2>';
+                    echo '<ul class="games-list">';
+                    foreach($games as $game) {
+                        echo '<li class="games-list-item">' . $game['name'] . '</li>';
+                    }
+                    echo '</ul>';
+                };
+            ?>
+        </div>
+    </div>
+    <div class="games" data-toggle-id="view-grid">
     <?php
         array_map(function($game) use($page) {
             if($game['hidden'] === false) {
@@ -58,6 +79,24 @@ $page = new Page();
                 step="100"
                 value="200"
             />
+        </div>
+        <div class="settings-item settings-view">
+            <button
+                class="view-button view-button--grid button-primary"
+                data-toggle-target="view-grid"
+                data-toggle-action="show"
+                data-toggle-hide="view-list"
+            >
+                Grid view
+            </button>
+            <button
+                class="view-button view-button--list"
+                data-toggle-target="view-list"
+                data-toggle-action="show"
+                data-toggle-hide="view-grid"
+            >
+                List view
+            </button>
         </div>
     </div>
     <script type="text/javascript" src="script.js" async></script>

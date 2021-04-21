@@ -19,6 +19,7 @@ class Page {
 
     private const FILES_WEB_PATH = self::LIBRARY_DIR . '/files/';
 
+    public $alphabeticalList = [];
     public $games = [];
     public $platforms = [];
     public $sources = [];
@@ -32,6 +33,7 @@ class Page {
         $this->sources = $this->getContentFromFiles(self::SOURCES_PATH);
         $this->platforms = $this->getContentFromFiles(self::PLATFORMS_PATH);
         $this->games = $this->getGames($this->platforms, $this->sources);
+        $this->alphabeticalList = $this->alphabeticalList($this->games);
     }
 
     private function structureSetup() {
@@ -66,6 +68,18 @@ class Page {
             return $b['name'] < $a['name'];
         });
         return $games;
+    }
+
+    private function alphabeticalList($games) {
+        $alphabetical = [];
+        foreach($games as $game) {
+            if($game['hidden'] === false) {
+                $name = $game['name'];
+                $firstLetter = mb_substr($name, 0, 1, "UTF-8");
+                $alphabetical[$firstLetter][] = $game;
+            }
+        }
+        return $alphabetical;
     }
 
     private function coverImage($json)
