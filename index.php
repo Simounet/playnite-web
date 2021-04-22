@@ -44,7 +44,7 @@ $page = new Page();
     <?php
         array_map(function($game) use($page) {
             if($game['hidden'] === false) {
-                echo '<div class="game-container">';
+                echo '<button class="game-container">';
                 if(is_string($game['cover-image'])) {
                     echo '<img src="' . $game['cover-image'] . '" class="game-cover" alt="' . $game['name'] . '" height="200" />';
                 }
@@ -62,7 +62,7 @@ $page = new Page();
                     echo '<br />';
                 }
                 echo '</div>';
-                echo '</div>';
+                echo '</button>';
             }
         }, $page->games);
     ?>

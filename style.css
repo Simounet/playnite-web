@@ -92,11 +92,19 @@ button {
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--cover-width));
     justify-content: center;
-    gap: 5px;
+    gap: 0 5px;
 }
 
 .game-container {
     position: relative;
+    padding: 0;
+    border: 2px solid transparent;
+    box-sizing: content-box;
+}
+
+.game-container:hover,
+.game-container:focus {
+    border-color: inherit;
 }
 
 .game-cover {
