@@ -85,7 +85,7 @@ button {
     background-color: #0b122ccc;
     border: none;
     border-radius: 20px 0 0;
-    z-index: 100;
+    z-index: 10;
 }
 
 .games {

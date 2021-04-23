@@ -68,6 +68,9 @@ $page = new Page();
     ?>
     </div>
     <div class="settings-container" data-toggle-id="settings-container" hidden>
+        <button class="settings-button" title="Close" data-toggle-target="settings-container">
+            <img src="assets/images/icons/close.svg" alt="Close" />
+        </button>
         <div class="settings-item">
             <label class="setting-label" for="setting-cover-size">Cover size</label>
             <input
