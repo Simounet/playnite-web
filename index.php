@@ -16,8 +16,8 @@ $page = new Page();
 </head>
 <body>
     <h1 class="title">Games number: <?php echo count($page->games); ?></h1>
-    <button class="settings-button" data-toggle-target="settings-container">
-        <img src="assets/images/icons/settings.svg" alt="settings" />
+    <button class="settings-button" title="Settings" data-toggle-special="overlay" data-toggle-target="settings-container">
+        <img src="assets/images/icons/settings.svg" alt="Settings" />
     </button>
     <div class="list-view" data-toggle-id="view-list" hidden>
         <ul class="toc-list">
