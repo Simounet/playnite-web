@@ -11,7 +11,7 @@ You're in love with your [Playnite](https://playnite.link/) library on your desk
 ## Dependencies
 
 - PHP 7
-- webp package (JPG version as fallback is planed)
+- Imagick
 
 ## Setup
 
@@ -32,5 +32,4 @@ You're in love with your [Playnite](https://playnite.link/) library on your desk
 ## TODO
 
 - Alphabetical view with anchors
-- use GD to generate JPG instead of WebP as a fallback
 - Offline support
