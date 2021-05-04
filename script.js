@@ -20,8 +20,10 @@
     imgSizeEl.addEventListener('change', () => {
         document.documentElement.style.setProperty('--cover-height', `${imgSizeEl.value}px`);
         document.documentElement.style.setProperty('--cover-width', `${parseInt(imgSizeEl.value) * .75}px`);
-        const val = imgSizeEl.value === '100' ? 'add' : 'remove';
-        document.documentElement.classList[val]('name-hidden');
+        if(settings.gameNameDisplay.state === true) {
+            const show = imgSizeEl.value === '100';
+            settings.gameNameDisplay.toggle(show);
+        }
     });
 
     const settings = {
@@ -58,4 +60,9 @@
         }
     }
     viewButtons.init();
+
+    const gameNameDisplayedEl = document.querySelector('#setting-game-name-displayed');
+    gameNameDisplayedEl.addEventListener('change', () => {
+        settings.gameNameDisplay.toggle(!gameNameDisplayedEl.checked);
+    });
 })();

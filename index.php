@@ -83,6 +83,14 @@ $page = new Page();
                 value="200"
             />
         </div>
+        <div class="settings-item">
+            <label class="setting-label" for="setting-game-name-displayed">Game name displayed</label>
+            <input
+                type="checkbox"
+                id="setting-game-name-displayed"
+                checked
+            />
+        </div>
         <div class="settings-item settings-view">
             <button
                 class="view-button view-button--grid button-primary"

@@ -112,7 +112,6 @@ button {
 }
 
 
-.game-cover,
 .game-container {
     width: var(--cover-width, 150px);
     height: var(--cover-height, 200px);
@@ -120,6 +119,7 @@ button {
 
 .game-name {
     position: absolute;
+    padding: 3px 0;
     bottom: 0;
     left: 0;
     right: 0;
