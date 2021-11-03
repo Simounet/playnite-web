@@ -88,22 +88,28 @@ button {
     z-index: 10;
 }
 
-.games {
+.grid-view {
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--cover-width));
     justify-content: center;
     gap: 0 5px;
 }
 
-.game-container {
+.grid-view .game-container,
+.grid-view .game-cover {
+    width: var(--cover-width, 150px);
+    height: var(--cover-height, 200px);
+}
+
+.grid-view .game-container {
     position: relative;
     padding: 0;
     border: 2px solid transparent;
     box-sizing: content-box;
 }
 
-.game-container:hover,
-.game-container:focus {
+.grid-view .game-container:hover,
+.grid-view .game-container:focus {
     border-color: inherit;
 }
 
@@ -111,13 +117,7 @@ button {
     object-fit: cover;
 }
 
-
-.game-container {
-    width: var(--cover-width, 150px);
-    height: var(--cover-height, 200px);
-}
-
-.game-name {
+.grid-view .game-name {
     position: absolute;
     padding: 3px 0;
     bottom: 0;
@@ -148,6 +148,33 @@ button {
 
 .list-view {
     position: relative;
+    margin: 0 10px;
+}
+
+.list-view .game-cover {
+    display: none;
+}
+
+.list-view .game-container {
+    display: flex;
+    margin-left: 40px;
+    padding: 5px 10px;
+    word-break: break-word;
+}
+
+.list-view .game-name {
+    display: flex;
+    text-align: left;
+    align-items: center;
+}
+
+.list-view .game-name::before {
+    display: inline-block;
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+    content: '';
+    background: url('assets/images/logo-dark.svg') center / 24px no-repeat;
 }
 
 .toc-list {
@@ -161,6 +188,7 @@ button {
     list-style: none;
     overflow: auto;
     box-sizing: border-box;
+    z-index: 10;
 }
 
 .toc-list-item {
@@ -179,38 +207,18 @@ button {
     scroll-margin-top: 70px;
 }
 
+.grid-view .games-list-letter {
+    font-size: 4rem;
+    justify-self: center;
+    align-self: center;
+}
+
 .games-list-letter:target {
 	color: #55cdff;
 }
 
-.games-list-container {
-    margin: 0 10px;
-}
-
-.games-list {
-    list-style: none;
-}
-
-.games-list-item {
-    display: flex;
-    word-break: break-word;
-}
-
-.games-list-item:not(:last-of-type) {
-    margin-bottom: 10px;
-}
-
-.games-list-item::before {
-    display: inline-block;
-    margin-right: 8px;
-    width: 24px;
-    height: 24px;
-    content: '';
-    background: url('assets/images/logo-dark.svg') center / 24px no-repeat;
-}
-
 @media(min-width: 960px) {
-    .games-list-container {
+    .list-view {
         margin-left: auto;
         margin-right: auto;
         max-width: 960px;

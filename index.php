@@ -19,52 +19,41 @@ $page = new Page();
     <button class="settings-button" title="Settings" data-toggle-special="overlay" data-toggle-target="settings-container">
         <img src="assets/images/icons/settings.svg" alt="Settings" />
     </button>
-    <div class="list-view" data-toggle-id="view-list" hidden>
-        <ul class="toc-list">
-            <?php
-                array_map(function($letter) {
-                    echo '<li class="toc-list-item"><a href="#toc-' . $letter . '" class="toc-link">' . $letter . '</a></li>';
-                }, array_keys($page->alphabeticalList));
-            ?>
-        </ul>
-        <div class="games-list-container">
-            <?php
-                foreach($page->alphabeticalList as $letter => $games) {
-                    echo '<h2 id="toc-' . $letter . '" class="games-list-letter">' . $letter . '</h2>';
-                    echo '<ul class="games-list">';
-                    foreach($games as $game) {
-                        echo '<li class="games-list-item">' . $game['name'] . '</li>';
-                    }
-                    echo '</ul>';
-                };
-            ?>
-        </div>
-    </div>
-    <div class="games" data-toggle-id="view-grid">
+    <ol class="toc-list">
+        <?php
+            array_map(function($letter) {
+                echo '<li class="toc-list-item"><a href="#toc-' . $letter . '" class="toc-link">' . $letter . '</a></li>';
+            }, array_keys($page->alphabeticalList));
+        ?>
+    </ol>
+    <div class="grid-view" data-toggle-id="view">
     <?php
-        array_map(function($game) use($page) {
-            if($game['hidden'] === false) {
-                echo '<button class="game-container">';
-                if(is_string($game['cover-image'])) {
-                    echo '<img src="' . $game['cover-image'] . '" class="game-cover" alt="' . $game['name'] . '" height="200" />';
+        foreach($page->alphabeticalList as $letter => $games) {
+            echo '<h2 id="toc-' . $letter . '" class="games-list-letter">' . $letter . '</h2>';
+            foreach($games as $game) {
+                if($game['hidden'] === false) {
+                    echo '<button class="game-container">';
+                    if(is_string($game['cover-image'])) {
+                        echo '<img src="' . $game['cover-image'] . '" class="game-cover" alt="' . $game['name'] . '" height="200" />';
+                    }
+                    echo '<span class="game-name">' . $game['name'] . '</span>';
+                    echo '<div class="info" hidden>';
+                    if($game['source-id']) {
+                        echo 'Source: ' . $game['source-id'] . '<br />';
+                    }
+                    if($game['platform']) {
+                        echo 'Platform: ' . $game['platform'] . '<br />';
+                    }
+                    if($game['playtime']) {
+                        echo 'Playtime: ';
+                        $page->playtimeDisplay($game['playtime']);
+                        echo '<br />';
+                    }
+                    echo '</div>';
+                    echo '</button>';
                 }
-                echo '<span class="game-name">' . $game['name'] . '</span>';
-                echo '<div class="info" hidden>';
-                if($game['source-id']) {
-                    echo 'Source: ' . $game['source-id'] . '<br />';
-                }
-                if($game['platform']) {
-                    echo 'Platform: ' . $game['platform'] . '<br />';
-                }
-                if($game['playtime']) {
-                    echo 'Playtime: ';
-                    $page->playtimeDisplay($game['playtime']);
-                    echo '<br />';
-                }
-                echo '</div>';
-                echo '</button>';
             }
-        }, $page->games);
+        }
     ?>
     </div>
     <div class="settings-container" data-toggle-id="settings-container" hidden>
@@ -94,17 +83,13 @@ $page = new Page();
         <div class="settings-item settings-view">
             <button
                 class="view-button view-button--grid button-primary"
-                data-toggle-target="view-grid"
-                data-toggle-action="show"
-                data-toggle-hide="view-list"
+                data-toggle-view="grid"
             >
                 Grid view
             </button>
             <button
                 class="view-button view-button--list"
-                data-toggle-target="view-list"
-                data-toggle-action="show"
-                data-toggle-hide="view-grid"
+                data-toggle-view="list"
             >
                 List view
             </button>

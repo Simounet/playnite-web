@@ -38,10 +38,16 @@
     };
 
     const viewButtons = {
-        list: document.querySelector('[data-toggle-target="view-list"]'),
-        grid: document.querySelector('[data-toggle-target="view-grid"]'),
+        listClass: 'list-view',
+        gridClass: 'grid-view',
+
+        list: document.querySelector('[data-toggle-view="list"]'),
+        grid: document.querySelector('[data-toggle-view="grid"]'),
+        view: document.querySelector('[data-toggle-id="view"]'),
 
         select: function(view) {
+            this.view.classList.add(view === 'list' ? this.listClass : this.gridClass);
+            this.view.classList.remove(view === 'list' ? this.gridClass : this.listClass);
             const selected = view === 'list' ?
                 this.list : this.grid;
             const unselected = view === 'list' ?
