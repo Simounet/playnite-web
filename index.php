@@ -4,6 +4,8 @@ use Simounet\PlayniteWeb\Page;
 $start = microtime(true);
 require_once(__DIR__ . '/classes/Page.php');
 $page = new Page();
+$viewMode = $_COOKIE['settings-view'] ?? 'grid';
+$viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +28,7 @@ $page = new Page();
             }, array_keys($page->alphabeticalList));
         ?>
     </ol>
-    <div class="grid-view" data-toggle-id="view">
+    <div class="<?php echo $viewClass; ?>" data-toggle-id="view">
     <?php
         foreach($page->alphabeticalList as $letter => $games) {
             echo '<h2 id="toc-' . $letter . '" class="games-list-letter">' . $letter . '</h2>';
@@ -82,13 +84,13 @@ $page = new Page();
         </div>
         <div class="settings-item settings-view">
             <button
-                class="view-button view-button--grid button-primary"
+                class="view-button view-button--grid<?php echo $viewMode === 'grid' ? ' button-primary' : ''; ?>"
                 data-toggle-view="grid"
             >
                 Grid view
             </button>
             <button
-                class="view-button view-button--list"
+                class="view-button view-button--list<?php echo $viewMode === 'list' ? ' button-primary' : ''; ?>"
                 data-toggle-view="list"
             >
                 List view

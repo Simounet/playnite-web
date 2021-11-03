@@ -54,6 +54,13 @@
                 this.grid : this.list;
             selected.classList.add('button-primary');
             unselected.classList.remove('button-primary');
+            this.setCookie(view);
+        },
+
+        setCookie: function(view) {
+            const date = new Date();
+            date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+            document.cookie = "settings-view=" + view + "; expires=" + date.toUTCString() + "; path=/; samesite=strict";
         },
 
         init: function() {
