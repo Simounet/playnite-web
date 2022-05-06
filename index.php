@@ -12,7 +12,7 @@ $viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
     <meta charset="UTF-8">
     <title>Playnite games library</title>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/app.css" />
     <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
 </head>
@@ -113,7 +113,7 @@ $viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
             </button>
         </div>
     </div>
-    <script type="text/javascript" src="script.js" async></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <!-- Generated in <?php echo microtime(true) - $start;?> seconds -->
 </body>
 </html>

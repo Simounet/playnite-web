@@ -70,11 +70,11 @@ button {
 }
 
 .view-button--list::before {
-    background: url('assets/images/icons/view-list.svg') center no-repeat;
+    background: url('../assets/images/icons/view-list.svg') center no-repeat;
 }
 
 .view-button--grid::before {
-    background: url('assets/images/icons/view-grid.svg') center no-repeat;
+    background: url('../assets/images/icons/view-grid.svg') center no-repeat;
 }
 
 .settings-button {
@@ -174,7 +174,7 @@ button {
     width: 24px;
     height: 24px;
     content: '';
-    background: url('assets/images/logo-dark.svg') center / 24px no-repeat;
+    background: url('../assets/images/logo-dark.svg') center / 24px no-repeat;
 }
 
 .toc-list {
