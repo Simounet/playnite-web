@@ -217,6 +217,21 @@ button {
 	color: #55cdff;
 }
 
+.games-datalist {
+    position: relative;
+    display: block;
+}
+
+.games-datalist__select {
+    position: absolute;
+    top: 0;
+    z-index: 100;
+}
+
+.games-summary::marker {
+    font-size: 1.5rem;
+}
+
 @media(min-width: 960px) {
     .list-view {
         margin-left: auto;

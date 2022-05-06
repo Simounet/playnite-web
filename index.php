@@ -28,6 +28,22 @@ $viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
             }, array_keys($page->alphabeticalList));
         ?>
     </ol>
+    <details>
+        <summary class="games-summary"><input list="games" /></summary>
+        <datalist id="games" class="games-datalist">
+            <select class="games-datalist__select" multiple size=8>
+                <?php
+                    foreach($page->alphabeticalList as $letter => $games) {
+                        foreach($games as $game) {
+                ?>
+              <option value="<?php echo $game['name']; ?>"><?php echo $game['name']; ?>
+              <?php
+                }
+                }
+              ?>
+            </select>
+        </datalist>
+    </details>
     <div class="<?php echo $viewClass; ?>" data-toggle-id="view">
     <?php
         foreach($page->alphabeticalList as $letter => $games) {
