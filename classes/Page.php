@@ -75,7 +75,7 @@ class Page {
         foreach($games as $game) {
             if($game['hidden'] === false) {
                 $name = $game['name'];
-                $firstLetter = mb_substr($name, 0, 1, "UTF-8");
+                $firstLetter = strtoupper(mb_substr($name, 0, 1, "UTF-8"));
                 $alphabetical[$firstLetter][] = $game;
             }
         }
