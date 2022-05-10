@@ -223,15 +223,6 @@ button {
     font-size: 4rem;
 }
 
-.games-datalist {
-    position: relative;
-    display: block;
-}
-
-.games-summary::marker {
-    font-size: 1.5rem;
-}
-
 @media(min-width: 960px) {
     .list-view {
         margin-left: auto;
