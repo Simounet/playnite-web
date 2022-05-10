@@ -12,6 +12,7 @@ $viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
     <meta charset="UTF-8">
     <title>Playnite games library</title>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles/awesomplete.css" />
     <link rel="stylesheet" href="styles/app.css" />
     <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
@@ -29,19 +30,17 @@ $viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
         ?>
     </ol>
     <details>
-        <summary class="games-summary"><input list="games" /></summary>
+        <summary class="games-summary"><input id="games-input" class="awesomplete" list="games" /></summary>
         <datalist id="games" class="games-datalist">
-            <select class="games-datalist__select" multiple size=8>
-                <?php
-                    foreach($page->alphabeticalList as $letter => $games) {
-                        foreach($games as $game) {
-                ?>
-              <option value="<?php echo $game['name']; ?>"><?php echo $game['name']; ?>
-              <?php
-                }
-                }
-              ?>
-            </select>
+          <?php
+              foreach($page->alphabeticalList as $letter => $games) {
+                  foreach($games as $game) {
+          ?>
+          <option value="<?php echo $game['id']; ?>"><?php echo $game['name']; ?>
+          <?php
+                  }
+              }
+          ?>
         </datalist>
     </details>
     <div class="<?php echo $viewClass; ?>" data-toggle-id="view">
@@ -113,6 +112,7 @@ $viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
             </button>
         </div>
     </div>
+    <script src="js/awesomplete.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <!-- Generated in <?php echo microtime(true) - $start;?> seconds -->
 </body>

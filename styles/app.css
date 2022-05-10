@@ -240,6 +240,10 @@ button {
     }
 }
 
+.awesomplete > ul {
+    background: linear-gradient(to bottom right, #26455e, hsla(197.6, 100%, 66.7%, .8))
+}
+
 [hidden] {
     display: none;
 }

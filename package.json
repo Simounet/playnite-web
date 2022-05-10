@@ -1,0 +1,22 @@
+{
+  "name": "playnite-web",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "dependencies:copy": "cp node_modules/awesomplete/awesomplete.min.js js/ && cp node_modules/awesomplete/awesomplete.css styles/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simounet/playnite-web.git"
+  },
+  "author": "",
+  "license": "AGPL v3",
+  "bugs": {
+    "url": "https://github.com/Simounet/playnite-web/issues"
+  },
+  "homepage": "https://github.com/Simounet/playnite-web#readme",
+  "dependencies": {
+    "awesomplete": "^1.1.5"
+  }
+}

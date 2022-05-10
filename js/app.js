@@ -78,4 +78,14 @@
     gameNameDisplayedEl.addEventListener('change', () => {
         settings.gameNameDisplay.toggle(!gameNameDisplayedEl.checked);
     });
+    const input = document.getElementById('games-input');
+    new Awesomplete(input, {
+        replace: function(suggestion) {
+            this.input.value = suggestion.label;
+        }
+    });
+
+    document.addEventListener('awesomplete-selectcomplete', function(t) {
+        window.location.hash = t.text.value;
+    })
 })();
