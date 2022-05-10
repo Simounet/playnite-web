@@ -95,10 +95,10 @@ button {
     gap: 0 5px;
 }
 
-.grid-view .game-container,
-.grid-view .game-cover {
+.grid-view .grid-view-item {
     width: var(--cover-width, 150px);
     height: var(--cover-height, 200px);
+    object-fit: cover;
 }
 
 .grid-view .game-container {
@@ -111,10 +111,6 @@ button {
 .grid-view .game-container:hover,
 .grid-view .game-container:focus {
     border-color: inherit;
-}
-
-.game-cover {
-    object-fit: cover;
 }
 
 .grid-view .game-name {
@@ -203,29 +199,33 @@ button {
     text-align: center;
 }
 
-.games-list-letter {
+.grid-view .games-list-letter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.games-list-letter,
+.game-container {
     scroll-margin-top: 70px;
 }
 
-.grid-view .games-list-letter {
-    font-size: 4rem;
-    justify-self: center;
-    align-self: center;
+.games-list-letter {
+    margin: 0;
 }
 
 .games-list-letter:target {
 	color: #55cdff;
 }
 
+.grid-view .games-list-letter {
+    font-size: 4rem;
+}
+
 .games-datalist {
     position: relative;
     display: block;
-}
-
-.games-datalist__select {
-    position: absolute;
-    top: 0;
-    z-index: 100;
 }
 
 .games-summary::marker {

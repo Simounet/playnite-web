@@ -46,12 +46,12 @@ $viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
     <div class="<?php echo $viewClass; ?>" data-toggle-id="view">
     <?php
         foreach($page->alphabeticalList as $letter => $games) {
-            echo '<h2 id="toc-' . $letter . '" class="games-list-letter">' . $letter . '</h2>';
+            echo '<div class="grid-view-item games-list-letter-container"><h2 id="toc-' . $letter . '" class="games-list-letter">' . $letter . '</h2></div>';
             foreach($games as $game) {
                 if($game['hidden'] === false) {
-                    echo '<button class="game-container">';
+                    echo '<button id="' . $game['id'] . '" class="grid-view-item game-container">';
                     if(is_string($game['cover-image'])) {
-                        echo '<img src="' . $game['cover-image'] . '" class="game-cover" alt="' . $game['name'] . '" height="200" />';
+                        echo '<img src="' . $game['cover-image'] . '" class="grid-view-item game-cover" alt="' . $game['name'] . '" height="200" />';
                     }
                     echo '<span class="game-name">' . $game['name'] . '</span>';
                     echo '<div class="info" hidden>';
