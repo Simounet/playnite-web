@@ -13,16 +13,12 @@ class Page {
     private const LIBRARY_DIR = self::DATA_DIR . '/library';
     private const LIBRARY_PATH = __DIR__ . '/../' . self::LIBRARY_DIR;
 
-    private const GAMES_PATH = self::LIBRARY_PATH . '/games/';
-    private const PLATFORMS_PATH = self::LIBRARY_PATH . '/platforms/';
-    private const SOURCES_PATH = self::LIBRARY_PATH . '/sources/';
+    private const GAMES_PATH = self::DATA_DIR . '/games.json';
 
     private const FILES_WEB_PATH = self::LIBRARY_DIR . '/files/';
 
     public $alphabeticalList = [];
     public $games = [];
-    public $platforms = [];
-    public $sources = [];
 
     private $pic;
 
@@ -30,9 +26,7 @@ class Page {
         $this->structureSetup();
         require_once(__DIR__ . '/Pic.php');
         $this->pic = new Pic(self::ASSETS_PATH);
-        $this->sources = $this->getContentFromFiles(self::SOURCES_PATH);
-        $this->platforms = $this->getContentFromFiles(self::PLATFORMS_PATH);
-        $this->games = $this->getGames($this->platforms, $this->sources);
+        $this->games = $this->getGames();
         $this->alphabeticalList = $this->alphabeticalList($this->games);
     }
 
@@ -46,22 +40,25 @@ class Page {
         }, [self::ASSETS_PATH, self::DATA_PATH]);
     }
 
-    private function getGames(array $platforms, array $sources): array {
-        $files = $this->getFiles(self::GAMES_PATH);
-        $games = array_map(function(string $fileName) use($platforms, $sources): array {
-            $content = file_get_contents(self::GAMES_PATH . $fileName);
-            $json = json_decode($content);
+    private function removeUtf8Bom(string $str): string {
+        return substr($str, 3);
+    }
+
+    private function getGames(): array {
+        $gamesInfo = file_get_contents(self::GAMES_PATH);
+        $json = json_decode($this->removeUtf8Bom($gamesInfo));
+        $games = array_map(function(object $game): array {
             return [
-                'id' => $json->Id,
-                'name' => $json->Name,
-                'cover-image' => $this->coverImage($json),
-                'playtime' => $json->Playtime ?? 0,
-                'last-activity' => $json->LastActivity ?? 0,
-                'source-id' => isset($json->SourceId) ? $sources[$json->SourceId] : false,
-                'platform' => $platforms[$json->PlatformId],
-                'hidden' => isset($json->Hidden) ? (bool) $json->Hidden : false
+                'id' => $game->Id,
+                'name' => $game->Name,
+                'cover-image' => $this->coverImage($game),
+                'playtime' => $game->Playtime ?? 0,
+                'last-activity' => $game->LastActivity ?? 0,
+                'source-id' => isset($game->Source) && isset($game->Source->Name) ? $game->Source->Name : false,
+                'platform' => isset($game->Platforms) ? $game->Platforms[0] : '',
+                'hidden' => isset($game->Hidden) ? (bool) $game->Hidden : false
             ];
-        }, $files);
+        }, $json);
 
         usort($games, function(array $a, array $b) {
             //return $b['playtime] - $a['playtime];
