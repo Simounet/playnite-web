@@ -62,7 +62,7 @@ class Page {
 
         usort($games, function(array $a, array $b) {
             //return $b['playtime] - $a['playtime];
-            return $b['name'] < $a['name'];
+            return $a['name'] <=> $b['name'];
         });
         return $games;
     }
