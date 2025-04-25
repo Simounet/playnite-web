@@ -54,6 +54,7 @@ class Page {
                 'cover-image' => $this->coverImage($game),
                 'playtime' => $game->Playtime ?? 0,
                 'last-activity' => $game->LastActivity ?? 0,
+                'release-year' => isset($game->ReleaseDate) && isset($game->ReleaseDate->Year) ? $game->ReleaseDate->Year : false,
                 'source-id' => isset($game->Source) && isset($game->Source->Name) ? $game->Source->Name : false,
                 'platform' => isset($game->Platforms) ? $game->Platforms[0] : '',
                 'hidden' => isset($game->Hidden) ? (bool) $game->Hidden : false

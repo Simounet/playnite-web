@@ -53,6 +53,9 @@ $viewClass = $viewMode === 'grid' ? 'grid-view' : 'list-view';
                     }
                     echo '<span class="game-name">' . $game['name'] . '</span>';
                     echo '<div class="info" hidden>';
+                    if($game['release-year']) {
+                        echo 'Release year: ' . $game['release-year'] . '<br />';
+                    }
                     if($game['source-id']) {
                         echo 'Source: ' . $game['source-id'] . '<br />';
                     }
