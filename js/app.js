@@ -78,12 +78,37 @@
     gameNameDisplayedEl.addEventListener('change', () => {
         settings.gameNameDisplay.toggle(!gameNameDisplayedEl.checked);
     });
-    const input = document.getElementById('games-input');
-    new Awesomplete(input, {
-        replace: function(suggestion) {
-            this.input.value = suggestion.label;
+
+
+    function initAwesomplete() {
+        const input = document.getElementById('games-input');
+
+        if (!input || !window.Awesomplete || input.awesomplete) {
+            return;
         }
-    });
+
+        const awesomplete = new Awesomplete(input, {
+            minChars: 1,
+            replace: function(suggestion) {
+                this.input.value = suggestion.label;
+            }
+        });
+
+        if (input.value.length >= awesomplete.minChars) {
+            input.dispatchEvent(new Event('input', {
+                bubbles: true
+            }));
+        }
+    }
+
+    function waitForAwesomplete() {
+        if (window.Awesomplete) {
+            initAwesomplete();
+        } else {
+            setTimeout(waitForAwesomplete, 50);
+        }
+    }
+    waitForAwesomplete();
 
     document.addEventListener('awesomplete-selectcomplete', function(t) {
         const value = event.text.value;
