@@ -86,6 +86,10 @@
     });
 
     document.addEventListener('awesomplete-selectcomplete', function(t) {
-        window.location.hash = t.text.value;
+        const value = event.text.value;
+
+        requestAnimationFrame(function () {
+            window.location.hash = encodeURIComponent(value);
+        });
     })
 })();
